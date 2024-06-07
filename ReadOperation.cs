@@ -76,7 +76,6 @@ namespace Controller
                     Label = token["label"]!.ToString(),
                     Nexts = GetNexts(token["nexts"]!),
                     Selects = GetSelect(token["selects"]!),
-                    Selects = token["selects"]!,
                     SpCount = token["spCount"]!.ToObject<int>(),
                     Texts = GetTexts(token["texts"]!),
                     Title = token["title"]!.Select(x => x.ToString()).ToList(),
