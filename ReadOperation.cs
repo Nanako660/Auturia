@@ -75,6 +75,8 @@ namespace Controller
                     FirstLine = token["firstLine"]!.ToObject<int>(),
                     Label = token["label"]!.ToString(),
                     Nexts = GetNexts(token["nexts"]!),
+                    Selects = GetSelect(token["selects"]!),
+                    Selects = token["selects"]!,
                     SpCount = token["spCount"]!.ToObject<int>(),
                     Texts = GetTexts(token["texts"]!),
                     Title = token["title"]!.Select(x => x.ToString()).ToList(),
@@ -104,6 +106,18 @@ namespace Controller
             }
 
             return nexts;
+        }
+        
+        private List<Select> GetSelect(JToken? tokens)
+        {
+            if(tokens is null)
+                return null!;
+		
+            List<Select> selects = new();
+            foreach (var token in tokens)
+                selects.Add(token.ToObject<Select>()!);
+			
+            return selects;
         }
 
         private List<Text>? GetTexts(JToken? tokens, Language language = Language.SimpleChinese)
